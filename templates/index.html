@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA2K Rating Predictor</title>
+</head>
+<body>
+    <h2>NBA2K Rating Predictor</h2>
+    <form action="/" method="post">
+        {% for stat in ['AGE', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%', 'FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'TOV', 'STL', 'BLK'] %}
+        <label for="{{ stat }}">{{ stat }}:</label>
+        <input type="number" step="0.1" name="{{ stat }}" required><br><br>
+        {% endfor %}
+        <input type="submit" value="Predict">
+    </form>
+    <br>
+    {% if predicted_rating %}
+    <h3>Predicted NBA2K Rating: {{ predicted_rating }}</h3>
+    {% endif %}
+</body>
+</html>
